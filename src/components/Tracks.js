@@ -2,9 +2,9 @@ import React, { Component } from "react";
 
 const Track = ({ toggleAudio, track: { album, name, preview_url } }) => {
   return (
-    <div onClick={toggleAudio(preview_url)}>
-      <img src={album.images[0].url} alt="album" />
-      <p>{name}</p>
+    <div onClick={toggleAudio(preview_url)} className="track">
+      <img src={album.images[0].url} alt="album" className="track-image" />
+      <p className="track-text">{name}</p>
     </div>
   );
 };

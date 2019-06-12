@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
 
+const API_ADDRESS = 'https://spotify-api-wrapper.appspot.com';
+
 export class Music extends Component {
   state = {
     artistQuery: '',
+    artist: null,
+    tracks: []
   }
 
   updateArtistQuery = event => {
@@ -10,7 +14,25 @@ export class Music extends Component {
   }
 
   searchArtist = () => {
-    console.log('search');
+    fetch(`${API_ADDRESS}/artist/${this.state.artistQuery}`)
+      .then(response => response.json())
+      .then(json => {
+        if (json.artists.total < 1)
+          return;
+
+        const artist = json.artists.items[0];
+        this.setState({ artist });
+
+        this.getTopTracks(artist.id);
+      })
+      .catch(err => alert(err.message));
+  }
+
+  getTopTracks = idArtist => {
+    fetch(`${API_ADDRESS}/artist/${idArtist}/top-tracks`)
+      .then(response => response.json())
+      .then(json => this.setState({ tracks: json.tracks }))
+      .catch(err => alert(err.message));
   }
 
   handleKeyPress = event => {
@@ -19,6 +41,7 @@ export class Music extends Component {
   }
 
   render() {
+    console.log(this.state);
     return (
       <div>
         <h2>Music Master</h2>

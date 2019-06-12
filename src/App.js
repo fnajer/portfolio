@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
+import Title from './Title';
 import Biography from './Biography';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
@@ -22,7 +23,8 @@ class App extends Component {
       <div className="App">
         <img src={profile} alt="profile" className="profile"/>
         <h1>Hello!</h1>
-        <p>My name is Alexey. I'm a software engineer</p>
+        <p>My name is Alexey.</p>
+        <Title />
         <p>I'm always looking forward to working on meaningful projects.</p>
         <Biography show={displayBio} toggleShow={this.toggleDisplayBio}/>
         <hr/>

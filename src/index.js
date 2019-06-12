@@ -4,13 +4,16 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.css';
 import App from './components/App';
 import Jokes from './components/Jokes';
+import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <Router>
+    <Header />
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/jokes" component={Jokes} />
+      {/* <Route exact path="/" render={() => <Header><App /></Header>} /> */}
     </Switch>
   </Router>, 
   document.getElementById('root'));

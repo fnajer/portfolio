@@ -4,7 +4,7 @@ import Title from './Title';
 import Biography from './Biography';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
-import profile from './assets/profile.png';
+import profile from '../assets/profile.png';
 
 class App extends Component {
   state = {

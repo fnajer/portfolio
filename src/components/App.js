@@ -5,6 +5,7 @@ import Biography from './Biography';
 import Projects from './Projects';
 import SocialProfiles from './SocialProfiles';
 import profile from '../assets/profile.png';
+import Jokes from './Jokes';
 
 class App extends Component {
   state = {
@@ -31,6 +32,8 @@ class App extends Component {
         <Projects />
         <hr />
         <SocialProfiles />
+        <hr />
+        <Jokes />
       </div>
     );
   }

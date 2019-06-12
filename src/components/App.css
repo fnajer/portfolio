@@ -60,3 +60,16 @@
   width: 250px;
   bottom: 0;
 }
+
+.track-icon {
+  position: absolute;
+  bottom: 100px;
+  left: 100px;
+  width: 50px;
+  height: 50px;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  border-radius: 25px;
+  opacity: 0.8;
+}

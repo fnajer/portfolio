@@ -41,12 +41,10 @@ class Game extends Component {
 const mapStateToProps = state => ({
   gameStarted: state.gameStarted,
 });
-const mapDispatchToProps = dispatch => ({
-  startGame: () => dispatch(startGame()),
-  cancelGame: () => dispatch(cancelGame()),
-  fetchNewDeck: () => fetchNewDeck(dispatch),
-})
 
-const ConnectComponent = connect(mapStateToProps, mapDispatchToProps);
+const ConnectComponent = connect(
+  mapStateToProps, 
+  { startGame, cancelGame, fetchNewDeck }
+);
 
 export default ConnectComponent(Game);

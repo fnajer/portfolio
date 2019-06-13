@@ -1,11 +1,22 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { startGame, cancelGame } from '../../actions/settings';
+import { fetchDeckResult } from '../../actions/deck';
 import Instructions from './Instructions';
 
 class Game extends Component {
+  startGame = () => {
+    const { startGame, fetchDeckResult} = this.props;
+    startGame();
+
+    fetch("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+      .then(response => response.json())
+      .then(json => fetchDeckResult(json))
+      .catch(err => alert(err.message));
+  }
+
   render() {
-    const { gameStarted, startGame, cancelGame} = this.props;
+    const { gameStarted, cancelGame} = this.props;
     return (
       <div>
         <h2>♤ ♡ Evens or Odds ♥ ♢</h2>
@@ -20,7 +31,7 @@ class Game extends Component {
             <div>
               <h3>A new game awaits</h3>
               <br />
-              <button onClick={startGame}>Start Game</button>
+              <button onClick={this.startGame}>Start Game</button>
               <hr />
               <Instructions />
             </div>          
@@ -37,6 +48,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   startGame: () => dispatch(startGame()),
   cancelGame: () => dispatch(cancelGame()),
+  fetchDeckResult: deckJson => dispatch(fetchDeckResult(deckJson)),
 })
 
 const ConnectComponent = connect(mapStateToProps, mapDispatchToProps);

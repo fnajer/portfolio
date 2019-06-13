@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './index.css';
 import App from './components/App';
 import Jokes from './components/Jokes';
-import Music from './components/Music';
+import Music from './components/Music/Music';
 import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
 

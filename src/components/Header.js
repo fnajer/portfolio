@@ -19,6 +19,9 @@ const Header = () => {
       <h3 style={style}>
         <Link to="/music">Music</Link>
       </h3>
+      <h3 style={style}>
+        <Link to="/game">Game</Link>
+      </h3>
     </div>
   );
 };

@@ -1,7 +1,11 @@
-import { SET_GUESS, SET_GAME_STARTED } from "../actions/types";
+import { SET_GUESS, SET_GAME_STARTED, DECK_DRAW } from "../actions/types";
+
+const EVENS = ["2", "4", "6", "8", "0"];
+const ODDS = ["ACE", "3", "5", "7", "9"];
 
 const DEFAULT_STATE = {
-  guess: '',
+  guess: "",
+  correctGuesses: 0
 };
 
 const gameStateReducer = (state = DEFAULT_STATE, action) => {
@@ -13,6 +17,20 @@ const gameStateReducer = (state = DEFAULT_STATE, action) => {
       };
     case SET_GAME_STARTED:
       return DEFAULT_STATE;
+    case DECK_DRAW.FETCH_SUCCESS:
+      const { value } = action.cards[0];
+      const { guess, correctGuesses } = state;
+
+      if (
+        (guess === "even" && EVENS.includes(value)) ||
+        (guess === "odd" && ODDS.includes(value))
+      )
+        return {
+          ...state,
+          correctGuesses: correctGuesses + 1
+        };
+
+      return state;
     default:
       return state;
   }

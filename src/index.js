@@ -14,11 +14,11 @@ import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(
-  rootReducer,
-  composeEnhancers(
-    applyMiddleware(thunk)
-));
+const enhancer = composeEnhancers(
+  applyMiddleware(thunk)
+);
+
+const store = createStore(rootReducer, enhancer);
 store.subscribe(() => console.log(store.getState()));
 
 const RouterApp = () => (

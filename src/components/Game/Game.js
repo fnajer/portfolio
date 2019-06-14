@@ -1,16 +1,16 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
-import { startGame, cancelGame } from '../../actions/settings';
-import { fetchNewDeck } from '../../actions/deck';
-import Instructions from './Instructions';
-import fetchStates from '../../reducers/fetchStates';
+import { connect } from "react-redux";
+import { startGame, cancelGame } from "../../actions/settings";
+import { fetchNewDeck } from "../../actions/deck";
+import Instructions from "./Instructions";
+import fetchStates from "../../reducers/fetchStates";
 
 class Game extends Component {
   startGame = () => {
     const { startGame, fetchNewDeck } = this.props;
     startGame();
     fetchNewDeck();
-  }
+  };
 
   render() {
     const { gameStarted, cancelGame, fetchState, message } = this.props;
@@ -25,36 +25,37 @@ class Game extends Component {
     return (
       <div>
         <h2>♤ ♡ Evens or Odds ♥ ♢</h2>
-        {
-          gameStarted ? (
-            <div>
-              <h3>The game is on!</h3>
-              <br />
-              <button onClick={cancelGame}>Cancel Game</button>
-            </div>
-          ) : (
-            <div>
-              <h3>A new game awaits</h3>
-              <br />
-              <button onClick={this.startGame}>Start Game</button>
-              <hr />
-              <Instructions />
-            </div>          
-          )
-        }
+        {gameStarted ? (
+          <div>
+            <h3>The game is on!</h3>
+            <br />
+            <button onClick={cancelGame}>Cancel Game</button>
+          </div>
+        ) : (
+          <div>
+            <h3>A new game awaits</h3>
+            <br />
+            <button onClick={this.startGame}>Start Game</button>
+            <hr />
+            <Instructions />
+          </div>
+        )}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  gameStarted: state.gameStarted,
-  fetchState: state.fetchState,
-  message: state.message,
-});
+const mapStateToProps = state => {
+  const {
+    settings: { gameStarted },
+    deck: { fetchState, message }
+  } = state;
+
+  return { gameStarted, fetchState, message };
+};
 
 const ConnectComponent = connect(
-  mapStateToProps, 
+  mapStateToProps,
   { startGame, cancelGame, fetchNewDeck }
 );
 

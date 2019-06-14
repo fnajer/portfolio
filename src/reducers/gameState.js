@@ -1,11 +1,14 @@
 import { SET_GUESS, SET_GAME_STARTED, DECK_DRAW } from "../actions/types";
+import { checkRecord, getCurrentRecord } from "../utils";
 
 const EVENS = ["2", "4", "6", "8", "0"];
 const ODDS = ["ACE", "3", "5", "7", "9"];
 
 const DEFAULT_STATE = {
   guess: "",
-  correctGuesses: 0
+  correctGuesses: 0,
+  record: getCurrentRecord(),
+  isNewRecord: false,
 };
 
 const gameStateReducer = (state = DEFAULT_STATE, action) => {
@@ -24,12 +27,15 @@ const gameStateReducer = (state = DEFAULT_STATE, action) => {
       if (
         (guess === "even" && EVENS.includes(value)) ||
         (guess === "odd" && ODDS.includes(value))
-      )
+      ) {
+        const { record, isNewRecord } = checkRecord(correctGuesses + 1);
         return {
           ...state,
-          correctGuesses: correctGuesses + 1
+          correctGuesses: correctGuesses + 1,
+          record,
+          isNewRecord
         };
-
+      }
       return state;
     default:
       return state;

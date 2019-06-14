@@ -1,15 +1,17 @@
 import React from "react";
 import { connect } from 'react-redux';
+import { fetchDrawCard } from '../../actions/deck';
 
-const DrawCard = ({ deckId }) => {
+const DrawCard = ({ deckId, fetchDrawCard }) => {
   console.log(deckId);
   return (
     <div>
-      <button>Get the next card</button>
+      <button onClick={() => fetchDrawCard(deckId)}>Draw the next card!</button>
     </div>
   );
 };
 
 export default connect(
-  state => ({ deckId: state.deck.deckId })
+  state => ({ deckId: state.deck.deckId }),
+  { fetchDrawCard }
 )(DrawCard);

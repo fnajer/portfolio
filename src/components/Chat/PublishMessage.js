@@ -2,9 +2,22 @@ import React, { Component } from "react";
 import PubSub from "../../pubsub";
 import { sendMessage } from "../../actions/messages";
 
+const pubsub = new PubSub();
 
 class PublishMessage extends Component {
+  state = {
+    text: ""
+  };
 
+  updateText = event => this.setState({ text: event.target.value });
+
+  publishMessage = () => {
+    pubsub.publish(sendMessage(this.state.text));
+  };
+
+  handleKeyPress = event => {
+    if (event.key === "enter") this.publishMessage();
+  };
 
   render() {
     return (

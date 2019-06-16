@@ -22,6 +22,9 @@ const Header = () => {
       <h3 style={style}>
         <Link to="/game">Game</Link>
       </h3>
+      <h3 style={style}>
+        <Link to="/chat">Chat</Link>
+      </h3>
     </div>
   );
 };

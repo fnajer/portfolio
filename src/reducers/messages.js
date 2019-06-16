@@ -1,7 +1,7 @@
 import { NEW_MESSAGE } from "../actions/types";
 
 const DEFAULT_STATE = {
-  messages: []
+  items: []
 };
 
 const messagesReducer = (state = DEFAULT_STATE, action) => {
@@ -9,7 +9,7 @@ const messagesReducer = (state = DEFAULT_STATE, action) => {
     case NEW_MESSAGE:
       return {
         ...state,
-        messages: [...state.messages, action.message]
+        items: [...state.items, action.message]
       };
     default:
       return {

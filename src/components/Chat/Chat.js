@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PublishMessage from "./PublishMessage";
+import MessageBoard from "./MessageBoard";
 
 class Chat extends Component {
   render() {
@@ -8,6 +9,8 @@ class Chat extends Component {
         <h2>Chat Reaction</h2>
         <hr/>
         <PublishMessage/>
+        <hr />
+        <MessageBoard />
       </div>
     );
   }

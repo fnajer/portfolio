@@ -13,6 +13,7 @@ import Music from './components/Music/Music';
 import Game from './components/Game/Game';
 import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
+import { sendMessage } from "./actions/messages";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const enhancer = composeEnhancers(
@@ -32,12 +33,7 @@ pubsub.addListener({
     store.dispatch(message);
   }
 });
-setTimeout(() => {
-  pubsub.publish({
-    message: 'foo',
-    type: 'foo',
-  });
-}, 500);
+setTimeout(() => { pubsub.publish(sendMessage("hello")) }, 500);
 
 const RouterApp = () => (
   <Router>

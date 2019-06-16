@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import PubSub from "../../pubsub";
+import pubsub from "../../pubsub";
 import { sendMessage } from "../../actions/messages";
-
-const pubsub = new PubSub();
 
 class PublishMessage extends Component {
   state = {

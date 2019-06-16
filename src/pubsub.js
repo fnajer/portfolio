@@ -3,10 +3,10 @@ import pubNubConfig from "./pubnub.config";
 
 export const MESSAGE_CHANNEL = 'MESSAGE_CHANNEL';
 
-class PubSub {
+export class PubSub {
   constructor() {
     this.pubnub = new PubNub(pubNubConfig);
-
+    console.log('111', this);
     this.pubnub.subscribe({ channels: [MESSAGE_CHANNEL] });
   }
 
@@ -19,4 +19,6 @@ class PubSub {
   }
 }
 
-export default PubSub;
+const pubsub = new PubSub();
+
+export default pubsub;

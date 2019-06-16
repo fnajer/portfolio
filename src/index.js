@@ -6,6 +6,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import './index.css';
+import './pubsub';
 import App from './components/App';
 import Jokes from './components/Jokes';
 import Music from './components/Music/Music';

@@ -8,6 +8,7 @@
 # testing
 /coverage
 notes.js
+pubnub.config.json
 
 # production
 /build

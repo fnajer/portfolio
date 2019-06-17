@@ -4,7 +4,7 @@ import { sendMessage } from "../../actions/messages";
 
 class PublishMessage extends Component {
   state = {
-    text: ""
+    text: ''
   };
 
   updateText = event => this.setState({ text: event.target.value });

@@ -35,7 +35,7 @@ pubsub.addListener({
     store.dispatch(message);
   }
 });
-setTimeout(() => { pubsub.publish(sendMessage("hello")) }, 500);
+setTimeout(() => { pubsub.publish(sendMessage({ text: "hello", username: "Bob" })) }, 500);
 
 const RouterApp = () => (
   <Router>

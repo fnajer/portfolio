@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { setUsername } from "../../actions/user";
 
-const UserView = () => {
+const UserView = ({ setUsername }) => {
   return (
     <div>
       <h3>username</h3>

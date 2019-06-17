@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import './index.css';
-import pubsub from './pubsub';
+import PubSub, { PubSubContext } from './pubsub';
 import App from './components/App';
 import Jokes from './components/Jokes';
 import Music from './components/Music/Music';
@@ -23,6 +23,8 @@ const enhancer = composeEnhancers(
 
 const store = createStore(rootReducer, enhancer);
 store.subscribe(() => console.log(store.getState()));
+
+const pubsub = new PubSub();
 
 pubsub.addListener({
   message: messageObject => {
@@ -51,7 +53,9 @@ const RouterApp = () => (
 
 ReactDOM.render(
   <Provider store={store}>
-    <RouterApp />
+    <PubSubContext.Provider value={pubsub}>
+      <RouterApp />
+    </PubSubContext.Provider>
   </Provider>, 
   document.getElementById('root'));
 

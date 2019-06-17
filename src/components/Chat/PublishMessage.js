@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import pubsub from "../../pubsub";
+import { PubSubContext } from "../../pubsub";
 import { sendMessage } from "../../actions/messages";
 
 class PublishMessage extends Component {
@@ -10,7 +10,7 @@ class PublishMessage extends Component {
   updateText = event => this.setState({ text: event.target.value });
 
   publishMessage = () => {
-    pubsub.publish(sendMessage(this.state.text));
+    this.context.publish(sendMessage(this.state.text));
   };
 
   handleKeyPress = event => {
@@ -28,6 +28,7 @@ class PublishMessage extends Component {
       </div>
     );
   }
+  static contextType = PubSubContext;
 }
 
 export default PublishMessage;

@@ -20,4 +20,4 @@ const MessageBoard = ({ messages }) => {
 
 export default connect(
   state => ({ messages: state.messages.items })
-)(MessageBoard)
+)(MessageBoard);

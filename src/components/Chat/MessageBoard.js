@@ -1,5 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import ReactionCreator from "./ReactionCreator";
+
 
 const MessageBoard = ({ messages }) => {
   return (
@@ -11,6 +13,7 @@ const MessageBoard = ({ messages }) => {
             <h4>{new Date(timestamp).toLocaleString()}</h4>
             <p>{text}</p>
             <h4>- {username}</h4>
+            <ReactionCreator />
             <hr />
           </div>
         );

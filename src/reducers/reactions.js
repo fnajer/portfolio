@@ -1,4 +1,4 @@
-import { REACTION_OBJECTS } from '../actions//types';
+import { REACTION_OBJECTS } from '../actions/types';
 
 const REACTION_TYPES = REACTION_OBJECTS.map(
   REACTION_OBJECT => REACTION_OBJECT.type

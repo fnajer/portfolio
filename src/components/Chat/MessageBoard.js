@@ -13,7 +13,7 @@ const MessageBoard = ({ messages }) => {
             <h4>{new Date(timestamp).toLocaleString()}</h4>
             <p>{text}</p>
             <h4>- {username}</h4>
-            <ReactionCreator />
+            <ReactionCreator messageId={id}/>
             <hr />
           </div>
         );

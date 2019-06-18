@@ -8,7 +8,7 @@ const DEFAULT_STATE = {};
 
 const reactionsReducer = (state = DEFAULT_STATE, action) => {
   if (REACTION_TYPES.includes(action.type)) {
-    const { messageId } = action;
+    const { messageId } = action.item;
     const reactionsMessage = state[messageId];
 
     if (reactionsMessage) {

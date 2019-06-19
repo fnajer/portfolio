@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchNews } from '../../actions/news';
+import fetchStates from "../../reducers/fetchStates";
 
 class News extends Component {
   componentDidMount() {
@@ -8,7 +9,14 @@ class News extends Component {
   }
 
   render() {
-    const { message, news } = this.props;
+    const { fetchState, message, news } = this.props;
+    if (fetchState === fetchStates.error)
+      return (
+        <div>
+          <p>Please, try reloading the app. Ann error occurred.</p>
+          <p>{message}</p>
+        </div>
+      );
 
     return (
       <div>
@@ -33,7 +41,8 @@ class News extends Component {
 export default connect(
   state => ({ 
     news: state.news.items,
-    message: state.news.message 
+    message: state.news.message,
+    fetchState: state.news.fetchState 
   }),
   { fetchNews }
 )(News);

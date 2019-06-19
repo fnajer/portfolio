@@ -1,8 +1,10 @@
 import { NEWS } from '../actions/types';
+import fetchStates from "./fetchStates";
 
 const DEFAULT_STATE = {
   items: [],
-  message: ''
+  fetchState: "",
+  message: ""
 };
 
 const newsReducer = (state = DEFAULT_STATE, action) => {
@@ -10,12 +12,14 @@ const newsReducer = (state = DEFAULT_STATE, action) => {
     case NEWS.FETCH_SUCCESS:
       return {
         ...state,
-        items: action.items
+        items: action.items,
+        fetchState: fetchStates.success
       }
     case NEWS.FETCH_ERROR:
       return {
         ...state,
-        message: action.message
+        message: action.message,
+        fetchState: fetchStates.error
       }
     default:
       return state;

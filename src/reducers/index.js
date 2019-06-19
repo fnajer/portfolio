@@ -5,6 +5,7 @@ import gameStateReducer from "./gameState";
 import messagesReducer from "./messages";
 import userReducer from "./user";
 import reactionsReducer from "./reactions";
+import newsReducer from "./news";
 
 const rootReducer = combineReducers({
   settings: settingsReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   gameState: gameStateReducer,
   messages: messagesReducer,
   user: userReducer,
-  reactions: reactionsReducer
+  reactions: reactionsReducer,
+  news: newsReducer
 });
 
 export default rootReducer;

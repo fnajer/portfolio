@@ -12,6 +12,7 @@ import Jokes from './components/Jokes';
 import Music from './components/Music/Music';
 import Game from './components/Game/Game';
 import Chat from './components/Chat/Chat';
+import News from './components/News/News';
 import Header from './components/Header';
 import * as serviceWorker from './serviceWorker';
 import { sendMessage } from "./actions/messages";
@@ -46,6 +47,7 @@ const RouterApp = () => (
       <Route path="/music" component={Music} />
       <Route path="/game" component={Game} />
       <Route path="/chat" component={Chat} />
+      <Route path="/news" component={News} />
       {/* <Route exact path="/" render={() => <Header><App /></Header>} /> */}
     </Switch>
   </Router>

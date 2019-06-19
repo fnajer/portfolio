@@ -12,6 +12,11 @@ export const DECK_DRAW = {
   FETCH_ERROR: 'DECK_DRAW_FETCH_ERROR'
 };
 
+export const NEWS = {
+  FETCH_SUCCESS: 'NEWS_FETCH_SUCCESS',
+  FETCH_ERROR: 'NEWS_FETCH_ERROR'
+};
+
 export const NEW_MESSAGE = 'NEW_MESSAGE';
 export const SET_USERNAME = 'SET_USERNAME';
 
